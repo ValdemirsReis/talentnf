@@ -1,0 +1,232 @@
+<!--<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TalentNF</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-800 pt-40">
+
+  <header class="fixed top-0 w-full bg-blue-900 p-4 flex justify-between items-center z-50">
+    <img src="img/Logo.jpg" alt="logo" class="w-28 h-28 rounded-full object-cover mx-auto">
+  </header>
+
+  <main class="container mx-auto px-4">
+    <h2 id="greeting" class="text-2xl font-semibold text-center mb-9"></h2>
+
+    <div class="flex flex-wrap justify-center gap-4 mb-6">
+      <select id="distrito" class="px-4 py-2 rounded border border-gray-300">
+        <option value="">Distrito</option>
+        <option value="Açores">Açores</option>
+        <option value="Aveiro">Aveiro</option>
+        <option value="Beja">Beja</option>
+        <option value="Braga">Braga</option>
+        <option value="Bragança">Bragança</option>
+        <option value="Castelo Branco">Castelo Branco</option>
+        <option value="Coimbra">Coimbra</option>
+        <option value="Évora">Évora</option>
+        <option value="Faro">Faro</option>
+        <option value="Guarda">Guarda</option>
+        <option value="Leiria">Leiria</option>
+        <option value="Lisboa">Lisboa</option>
+        <option value="Madeira">Madeira</option>
+        <option value="Portalegre">Portalegre</option>
+        <option value="Porto">Porto</option>
+        <option value="Santarém">Santarém</option>
+        <option value="Setúbal">Setúbal</option>
+        <option value="Viana do Castelo">Viana do Castelo</option>
+        <option value="Vila Real">Vila Real</option>
+        <option value="Viseu">Viseu</option>
+      </select>
+
+      <select id="concelho" class="px-4 py-2 rounded border border-gray-300">
+        <option value="">Concelho</option>
+      </select>
+
+      <select id="setor" class="px-4 py-2 rounded border border-gray-300">
+        <option value="">Setor</option>
+        <option value="Educação">Educação</option>
+        <option value="Engenharia">Engenharia</option>
+        <option value="Psicologia">Psicologia</option>
+      </select>
+
+      <select id="regime" class="px-4 py-2 rounded border border-gray-300">
+        <option value="">Regime</option>
+        <option value="Full-time">Full-time</option>
+        <option value="Part-time">Part-time</option>
+      </select>
+
+      <select id="modalidade" class="px-4 py-2 rounded border border-gray-300">
+        <option value="">Modalidade</option>
+        <option value="Remoto">Remoto</option>
+        <option value="Presencial">Presencial</option>
+        <option value="Misto">Misto</option>
+      </select>
+    </div>
+
+    <div id="jobseekers-container">
+      <div id="empty-message" class="font-bold text-red-600 text-center hidden mb-4"></div>
+      <div id="jobseekers" class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"></div>
+    </div>
+  </main>
+
+  <footer class="text-center text-sm mt-10 text-gray-500">
+    <p>TalentNF | Expandir horizontes e eliminar barreiras.</p>
+  </footer>
+
+  <script src="TNF.js"></script>
+</body>
+</html>-->
+
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TalentNF</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      display: none;
+    }
+    .modal-content {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 1rem;
+      max-width: 90%;
+      max-height: 90%;
+      overflow-y: auto;
+    }
+    .candidate-description {
+      color: #010101;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800 pt-40 font-sans">
+
+  <header class="fixed top-0 w-full bg-blue-900 p-4 flex justify-center items-center z-50 shadow-md">
+    <img src="img/Logo.jpg" alt="logo" class="w-20 h-20 rounded-full object-cover">
+  </header>
+
+  <main class="container mx-auto px-4">
+    <h2 id="greeting" class="text-2xl font-semibold text-center mb-9"></h2>
+
+    <div class="flex flex-wrap justify-center gap-4 mb-6">
+      <select id="distrito" class="px-4 py-2 rounded border border-gray-300 focus:ring focus:ring-blue-500">
+        <option value="">Distrito</option>
+      </select>
+
+      <select id="concelho" class="px-4 py-2 rounded border border-gray-300 focus:ring focus:ring-blue-500">
+        <option value="">Concelho</option>
+      </select>
+
+      <select id="setor" class="px-4 py-2 rounded border border-gray-300 focus:ring focus:ring-blue-500">
+        <option value="">Setor</option>
+        <option value="Educação">Educação</option>
+        <option value="Engenharia">Engenharia</option>
+        <option value="Psicologia">Psicologia</option>
+      </select>
+
+      <select id="regime" class="px-4 py-2 rounded border border-gray-300 focus:ring focus:ring-blue-500">
+        <option value="">Regime</option>
+        <option value="Full-time">Full-time</option>
+        <option value="Part-time">Part-time</option>
+      </select>
+
+      <select id="modalidade" class="px-4 py-2 rounded border border-gray-300 focus:ring focus:ring-blue-500">
+        <option value="">Modalidade</option>
+        <option value="Remoto">Remoto</option>
+        <option value="Presencial">Presencial</option>
+        <option value="Misto">Misto</option>
+      </select>
+    </div>
+
+    <div id="jobseekers-container">
+      <div id="empty-message" class="font-bold text-red-600 text-center hidden mb-4"></div>
+      <div id="jobseekers" class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"></div>
+    </div>
+  </main>
+
+  <footer class="text-center text-sm mt-10 text-gray-500 py-4">
+    <button id="openModal" class="mt-2 text-blue-700 hover:underline">Legislação</button>
+  </footer>
+
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <button id="closeModal" class="float-right text-red-500 font-bold">X</button>
+      <h2 class="text-xl font-semibold mb-4">Decreto-Lei n.º 290/2009</h2>
+      <div class="text-justify text-sm text-gray-800">
+        <p><strong>Objetivo:</strong> Criar o Programa de Emprego e Apoio à Qualificação das Pessoas com Deficiências e Incapacidades, estabelecendo o regime de concessão de apoio técnico e financeiro para o desenvolvimento das políticas de emprego e apoio à qualificação dessas pessoas.</p>
+        <p><strong>Medidas Incluídas:</strong></p>
+        <ul class="list-disc list-inside">
+          <li>Apoio à qualificação (formação profissional inicial e contínua);</li>
+          <li>Apoios à integração, manutenção e reintegração no mercado de trabalho;</li>
+          <li>Emprego apoiado (estágios de inserção, contratos emprego-inserção, centros de emprego protegido, contratos de emprego apoiado em entidades empregadoras);</li>
+          <li>Prémio de mérito para entidades e pessoas que se destaquem na integração profissional de pessoas com deficiências e incapacidades.</li>
+        </ul>
+        <p><strong>Destinatários:</strong> Pessoas com deficiências e incapacidades em idade ativa.</p>
+        <p><strong>Entidades Envolvidas:</strong> Centros de reabilitação profissional, entidades de reabilitação, centros de recursos do IEFP, I.P., e o Fórum para a Integração Profissional.</p>
+        <p>Para mais detalhes, consulte o texto completo do decreto-lei no <a href="https://diariodarepublica.pt/dr/legislacao-consolidada/decreto-lei/2009-65884851" target="_blank" class="text-blue-700 underline">aqui.</a>.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="TNF.js"></script>
+  <script>
+    $('#openModal').on('click', () => $('#modal').fadeIn());
+    $('#closeModal').on('click', () => $('#modal').fadeOut());
+
+    function createCard(candidate) {
+      return `
+        <div class="border border-blue-200 rounded-2xl p-6 bg-white shadow-lg transition-transform hover:scale-[1.01] flex flex-col justify-between">
+          <div class="text-center">
+            <img src="${candidate.foto}" alt="${candidate.nome}" class="w-24 h-24 rounded-full object-cover mx-auto mb-4 border-2 border-blue-600">
+            <h4 class="text-xl font-semibold mb-1">${candidate.nome}</h4>
+            <p class="candidate-description text-sm italic mb-2">${candidate.descricao}</p>
+          </div>
+          <div class="text-sm leading-relaxed">
+            <p><strong>Distrito:</strong> ${candidate.distrito}</p>
+            <p><strong>Concelho:</strong> ${candidate.concelho}</p>
+            <p><strong>Setor:</strong> ${candidate.setor}</p>
+            <p><strong>Regime:</strong> ${candidate.regime}</p>
+            <p><strong>Modalidade:</strong> ${candidate.modalidade}</p>
+          </div>
+          <a href="${candidate.cv}" target="_blank" class="mt-4 bg-blue-700 hover:bg-blue-600 text-white text-center py-2 px-4 rounded-xl font-medium transition-colors">Ver CV</a>
+        </div>`;
+    }
+
+    function renderJobseekers(filteredJobseekers) {
+      const container = $('#jobseekers');
+      const emptyMessage = $('#empty-message');
+      container.empty();
+
+      if (filteredJobseekers.length === 0) {
+        emptyMessage.text("Não foram encontrados candidatos.").show();
+      } else {
+        emptyMessage.hide();
+        filteredJobseekers
+          .sort((a, b) => a.nome.localeCompare(b.nome))
+          .forEach(candidate => container.append(createCard(candidate)));
+      }
+    }
+
+    $('#greeting').text(`${new Date().getHours() < 12 ? "Bom dia" : new Date().getHours() < 18 ? "Boa tarde" : "Boa noite"}. Bem vindos à TalentNF!`);
+  </script>
+</body>
+</html>
