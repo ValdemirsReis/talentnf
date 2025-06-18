@@ -1,4 +1,3 @@
-// Corrigir campo incorreto "municipio" e manter consistência com "concelho"
 const jobseekers = [
     {
         nome: "Ana Maria Galvão",
